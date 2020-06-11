@@ -1,0 +1,38 @@
+﻿<h3>CssDemoComponent</h3>
+
+<style>
+    .mycolor {
+        color: orange
+    }
+
+    .mycolorchanged {
+        color: brown
+    }
+</style>
+
+<p>
+    <input type="text" @bind-value="paragraphStyle" @bind-value:event="oninput" />
+</p>
+
+<p @bind-style="paragraphStyle" @bind-style:event="onchange">
+    Blazorify the app!
+</p>
+
+<p @bind-class="cssName" @bind-class:event="onchange">
+    Blazorify the app!
+</p>
+
+<button @onclick="OnCssChanged" class="btn btn-primary">Color Changed</button>
+
+@code {
+    private string paragraphStyle = "color:red";
+
+    private string cssName = "mycolor";
+
+    public void OnCssChanged()
+    {
+        paragraphStyle = "color:blue";
+
+        cssName = "mycolorchanged";
+    }
+}
